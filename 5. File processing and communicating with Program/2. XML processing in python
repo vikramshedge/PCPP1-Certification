@@ -1,0 +1,35 @@
+Standard python libraries to work with XML:
+    xml.etree.ElementTree
+        -- has a very simple API for analyzing and creating XML data. It's an excellent choice for people who have never worked with the Document Object Model (DOM) before.
+    xml.dom.minidom
+        -– is the minimum implementation of the Document Object Model (DOM). Using the DOM, the approach to an XML document is slightly different, because it's parsed into a tree structure in which each node is an object.
+    xml.sax
+        -– SAX is an acronym for “Simple API for XML”. SAX is an interface in Python for event-driven XML document analysis. Unlike the above modules, analyzing a simple XML document using this module requires more work.
+
+
+
+prolog – the first (optional) line of the document. In the prolog, you can specify character encoding, e.g., <?xml version="1.0" encoding="ISO-8859-2"?> changes the default character encoding (UTF-8) to ISO-8859-2.
+root element – the XML document must have one root element that contains all other elements. In the example below, the main element is the data tag.
+elements – these consist of opening and closing tags. The elements include text, attributes, and other child elements. In the example below, we can find the book element with the title attribute and two child elements (author and year).
+attributes – these are placed in the opening tags. They consist of key-value pairs, e.g., title = "The Little Prince"
+
+    xml.etree.ElementTree as ET
+
+    tree = ET.parse("books.xml")
+    root = tree.getroot()
+    The getroot method returns the root element. With access to the root element, we can reach any elements in the document. Each of these elements is represented by a class called Element.
+
+    In addition to the parse method, we can use the method called fromstring, which, as an argument, takes XML as a string:
+    root = ET.fromstring(your_xml_as_string)
+    NOTE: The fromstring method doesn't return the ElementTree object, but instead returns the root element represented by the Element class.
+
+    for author in root.iter('author'):
+    print(author.text)
+    The iter method returns all elements by having the tag passed as an argument. The element that calls it is treated as the main element from which the search starts. In order to find all matches, the iterator iterates recursively through all child elements and their nested elements.
+
+    for book in root.findall('book'):
+    The Element object has a method called findall to search for direct child elements. Unlike the iter method, the findall method only searches the children at the first nesting level. Take a look at the example in the editor.
+    Here 'book' is tag name
+
+    find()
+        returns first child element
