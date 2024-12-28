@@ -1,0 +1,38 @@
+An instance is one particular physical instantiation of a class that occupies memory and has data elements.
+This is what 'self' refers to when we deal with class instances.
+
+Attribute:
+    Variables
+    Methods -- (also called as Callable attribute)
+
+Class attributes are most often addressed with 'dot' notation, i.e., <class>dot<attribute>.
+The other way to access attributes (variables) it to use the getattr() and setattr() functions.
+
+type:
+     foremost type that any class can be inherited from;
+     type of class, then type is returned;
+
+type() --returns new type objecrt when called,
+        three arguments -- to be discussed in metaclass section
+
+__class__:
+    returns the information about the class
+    for a class : <class 'type'>
+    for an instance : <class '__main__.Duck'>
+    for an variable : <class 'str'>
+    for an method : <class 'method'>
+    for an function : <class 'function'>
+
+
+instance variables:
+    defined in __init__ method of a class
+    present in __dict__ of an instance/object of a class
+    not present in Class __dict__
+
+class variables:
+    defined in class definition
+    present in __dict__ of an class of a class
+    not present in instance of __dict__
+    available before any of the instances are created
+    can be used by any of the instance variable
+
